@@ -1,5 +1,7 @@
 class Restaurant < ApplicationRecord
+  CATEGORY = %w[chinese italian japanese french belgian].freeze
+
   has_many :reviews, dependent: :destroy
   validates :name, :address, :category, presence: true
-  validates :category, acceptance: { accept: %w[chinese italian japanese french belgian] }
+  validates :category, acceptance: { accept: CATEGORY }
 end
