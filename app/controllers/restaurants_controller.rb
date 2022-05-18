@@ -22,6 +22,16 @@ class RestaurantsController < ApplicationController
 
   private
 
+  def auto_review
+    10.times do
+      Review.create(
+        rating: rand(0..5),
+        content: Faker::Restaurant.review,
+        restaurant_id: @restaurant[:id]
+      )
+    end
+  end
+
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
