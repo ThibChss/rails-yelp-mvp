@@ -1,7 +1,15 @@
-<h2>Add a new review here</h2>
+<div class="navbar nav-show">
+  <h2>Add Review</h2>
+  <div>
+    <%= link_to 'Restaurants', restaurants_path, class: 'btn btn-success' %>
+    <%= link_to @restaurant.name, restaurant_path(@restaurant), class: 'btn btn-primary' %>
+  </div>
+</div>
 
-<%= simple_form_for [@restaurant, @review] do |r| %>
-  <%= r.input :content %>
-  <%= r.select :rating, Review::RATE %>
-  <%= r.button :submit %>
-<% end %>
+<div class="container form-new-resto">
+  <%= simple_form_for [@restaurant, @review] do |r| %>
+    <%= r.input :content %>
+    <%= r.select :rating, Review::RATE %>
+    <%= r.button :submit, class: 'btn btn-primary btn-new-review' %>
+  <% end %>
+</div>

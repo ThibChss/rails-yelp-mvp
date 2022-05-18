@@ -1,9 +1,16 @@
-<h2>Add a restaurant here</h2>
+<div class="navbar nav-show">
+  <h2>Add Restaurant</h2>
+  <div>
+    <%= link_to 'Restaurants', restaurants_path, class: 'btn btn-success' %>
+  </div>
+</div>
 
-<%= simple_form_for @restaurant do |r| %>
-  <%= r.input :name %>
-  <%= r.input :address %>
-  <%= r.input :phone_number %>
-  <%= r.select :category, Restaurant::CATEGORY %>
-  <%= r.button :submit %>
-<% end %>
+<div class="container form-new-resto">
+  <%= simple_form_for @restaurant do |r| %>
+    <%= r.input :name %>
+    <%= r.input :address %>
+    <%= r.input :phone_number %>
+    <%= r.select :category, Restaurant::CATEGORY, class: 'select-new-resto' %>
+    <%= r.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>

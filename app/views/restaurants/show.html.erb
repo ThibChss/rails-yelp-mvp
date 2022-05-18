@@ -1,17 +1,22 @@
-<h2><%= @restaurant.name %></h2>
+<div class="navbar nav-show">
+  <h2><%= @restaurant.name %></h2>
+  <div>
+    <%= link_to 'Restaurants', restaurants_path, class: 'btn btn-success' %>
+    <%= link_to 'Add Review',  new_restaurant_review_path(@restaurant), class: 'btn btn-primary'%>
+  </div>
+</div>
 
 <ul>
-  <li>Address: <%= @restaurant.address %></li>
-  <li>Type: <%= @restaurant.category.capitalize %></li>
-  <li>Phone Number: <%= @restaurant.phone_number %></li>
+  <li class="resto-infos"><strong>Address: </strong><%= @restaurant.address %></li>
+  <li class="resto-infos"><strong>Type: </strong><%= @restaurant.category.capitalize %></li>
+  <li class="resto-infos"><strong>Phone number: </strong><%= @restaurant.phone_number %></li>
 </ul>
 
-<% @restaurant.reviews.each do |review| %>
-  <div class="card w-50">
-    <%= review.content %>
-    <%= review.rating %>
-  </div>
-<% end %>
-
-<%= link_to 'Restaurants', restaurants_path %>
-<%= link_to 'Add Review',  new_restaurant_review_path(@restaurant)%>
+<div class="container container-reviews">
+  <% @restaurant.reviews.each do |review| %>
+    <div class="card card-review">
+      <p><%= review.content %></p>
+      <p><%= "💛" * review.rating %><%= "🖤" * (5 - review.rating) %></p>
+    </div>
+  <% end %>
+</div>
